@@ -1,0 +1,62 @@
+.project-list {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(610px, 1fr));
+  grid: 0 10px;
+  grid-auto-rows: 5px;
+}
+
+.project-card {
+  width: 610px;
+  border-radius: 7px;
+  background-image: linear-gradient(
+    rgb(145, 242, 255),
+    rgb(145, 242, 255),
+    rgb(34, 63, 63)
+  );
+  padding: 14px;
+}
+
+.project-card-darkmode {
+  width: 610px;
+  border-radius: 7px;
+  background-image: linear-gradient(rgb(33, 143, 143), rgb(8, 41, 41));
+  padding: 14px;
+}
+
+#project-card-container {
+  transition: 0.3s ease;
+  padding: 10px;
+}
+
+#project-card-container:hover {
+  transform: scale(1.03);
+  transition: 0.3s ease;
+  cursor: pointer;
+}
+
+.title {
+  font-size: 20px;
+}
+
+.project-card img {
+  border-radius: 7px;
+  width: 100%;
+}
+
+.project-card-darkmode img {
+  border-radius: 7px;
+  width: 100%;
+}
+
+.youtube-button-container {
+  align-self: stretch;
+}
+
+.description {
+  color: #333;
+  font-size: 24px;
+}
+
+.description-darkmode {
+  color: #eee;
+}

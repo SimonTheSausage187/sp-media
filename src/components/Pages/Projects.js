@@ -1,50 +1,21 @@
 import React from "react";
+import ProjectCard from "./Projects/ProjectCard";
+import "./Projects/ProjectList.css";
 
-const Projects = () => {
-
-    const projects = [
-        {
-            title: 'HP Envy x360 Review',
-            description: 'agatha hat geazaubert',
-            date: 'irgendwann anfang juli',
-            images: '',
-            youtubeLink: ''
-        },
-        {
-            title: '',
-            description: '',
-            date: '',
-            images: '',
-            youtubeLink: ''
-        },
-        {
-            title: '',
-            description: '',
-            date: '',
-            images: '',
-            youtubeLink: ''
-        },
-        {
-            title: '',
-            description: '',
-            date: '',
-            images: '',
-            youtubeLink: ''
-        },
-        {
-            title: '',
-            description: '',
-            date: '',
-            images: '',
-            youtubeLink: ''
-        },
-]
-
-    return(
-        <div>
-            Projects
-        </div>
-    )
-}
+const Projects = ({ projects, darkMode }) => {
+  return (
+    <div className="project-list">
+      {projects.map((project) => {
+        return (
+          <ProjectCard
+            project={project}
+            key={project.reference}
+            darkMode={darkMode}
+          />
+        );
+      })}
+    </div>
+  );
+};
 
 export default Projects;

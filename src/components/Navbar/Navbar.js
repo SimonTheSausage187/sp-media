@@ -1,14 +1,24 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import Link from "../../Routing/Link";
 
-const Navbar = ({activeItem, darkMode, toggleTheme, NavbarFields}) => {
+const Navbar = ({darkMode, toggleTheme, NavbarFields}) => {
+
+    const [currentPath, setCurrentPath] =useState('')
+
+    useEffect(() => {
+        const updatePath = () => {
+            setCurrentPath(window.location.pathname)
+        }
+        updatePath()
+        window.addEventListener('popstate', updatePath)
+    }, [])
 
     const numToWords = ['zero','one','two','three','four','five','six','seven','eight','nine'];
 
     const niceHREF = (rawHREF) => {
         if(rawHREF.startsWith('@')) {
             if(rawHREF === '@Theme') {
-                return '';
+                return currentPath.substring(1);
             }
             return rawHREF.substring(1);
         } else {
@@ -31,14 +41,13 @@ const Navbar = ({activeItem, darkMode, toggleTheme, NavbarFields}) => {
             return (rawContent === "Get-in-Touch") ? "Get in Touch" : rawContent;
         }
     }
-
     return(
         <div>
-            <div className={`ui top fixed ${darkMode ? 'inverted' : ''} ${numToWords[NavbarFields.length]} item massive borderless menu`}>
+            <div className={`ui top fixed ${darkMode ? 'inverted' : ''} ${numToWords[NavbarFields.length]} item massive borderless menu`} style={{transition: "all s ease"}}>
             {NavbarFields.map((field, i) => {return(
                 <Link 
                     key={i} 
-                    className={`teal ${darkMode ? 'inverted' : ''} ${(activeItem === field) ? 'active' : ''} item`}
+                    className={`teal ${darkMode ? 'inverted' : ''} ${(currentPath.startsWith(`/${niceHREF(field)}`) && !(field === '@Theme')) ? 'active' : ''} item`}
                     href={niceHREF(field)}
                 >{niceContent(field)}</Link>
             );})}

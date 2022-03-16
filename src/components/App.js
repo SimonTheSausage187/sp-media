@@ -7,76 +7,101 @@ import Gallery from "./Pages/Gallery";
 import Projects from "./Pages/Projects";
 import Tools from "./Pages/Tools";
 import GetInTouch from "./Pages/GetInTouch";
+import Footer from "./Elements/Footer";
+import Slideshow from "./Elements/Slideshow";
 import LoremIpsum from "./Testing/LoremIpsum";
-import Footer from "./Elements/Footer"
+import ProjectPage from "./Pages/Projects/ProjectPage";
 
 class App extends React.Component {
+  NavbarFields = [
+    "@Home",
+    "Gallery",
+    "Projects",
+    "Tools",
+    "Get-in-Touch",
+    "@Theme",
+  ];
 
-    NavbarFields =  ['@Home','Gallery','Projects','Tools','Get-in-Touch','@Theme'];
+  constructor(props) {
+    super(props);
+    this.state = {
+      darkMode: true,
+    };
+  }
 
-    constructor(props){
-        super(props)
-        this.state = {
-            darkMode: true,
-            active: window.location.pathname
-        }
-    }
+  demoProject = (index) => {
+    return ({
+      title: "Demo Project Page",
+      reference: `demo-project-no-${index}`,
+      description: LoremIpsum,
+      previewDescription: "this is just a lot of lorem ipsum, but i am different than my predecessors preview text... ".repeat(Math.ceil(Math.random() * 3 * index)),
+      date: "25.10.2009",
+      images: "https://api.unsplash.com/collections/JnQS6oD3Gqw/photos?per_page=10",
+      youtubeLink: "https://www.youtube.com/watch?v=dQw4w9WgXcQ&t=1s",
+      previewImage: "https://i.ytimg.com/vi/6Mc-Thl1kTQ/maxresdefault.jpg"
+    })
+  }
 
-    componentDidMount() {
-        this.updateActive();
-        window.addEventListener('popstate', this.updateActive);
-    }
+  projects = [this.demoProject(1), this.demoProject(2), this.demoProject(3), this.demoProject(4), this.demoProject(5), this.demoProject(6), this.demoProject(7), this.demoProject(8), this.demoProject(9), this.demoProject(10), this.demoProject(11), this.demoProject(12), this.demoProject(13), this.demoProject(14), ];
 
-    toggleTheme = () => {
-        this.setState({darkMode: !this.state.darkMode});
-        return this.state.darkMode;
-    }
+  toggleTheme = () => {
+    this.setState({ darkMode: !this.state.darkMode });
+    return this.state.darkMode;
+  };
 
-    updateActive = () => {
-        const newActive = ((window.location.pathname).substring(1) === "Home") ? '@Home' : (window.location.pathname).substring(1);
-        this.setState({active: newActive});
-    }
+  render() {
+    return (
+      <div
+        className={`ui ${this.state.darkMode ? "inverted" : ""} basic segment`}
+        style={{transition: "all 0.25s ease"}}
+      >
+        <Navbar
+          NavbarFields={this.NavbarFields}
+          style={this.styles}
+          darkMode={this.state.darkMode}
+          toggleTheme={this.toggleTheme}
+        />
+        <div className="ui tiny menu"></div> {/** Spacer for Header*/}
+        <div>
+          <Route path="/">
+            <AutoForward href="/Home" />
+          </Route>
+          <Route path="/Home">
+            <Home darkMode={this.state.darkMode} />
+          </Route>
+          <Route path="/Gallery">
+            <Gallery
+              darkMode={this.state.darkMode}
+              importImages={this.importImages}
+              images={this.state.images}
+            />
+          </Route>
+          <Route path="/Projects">
+            <Projects darkMode={this.state.darkMode} projects={this.projects} />
+          </Route>
+          <Route path="/Tools">
+            <Tools darkMode={this.state.darkMode} />
+          </Route>
+          <Route path="/Get-in-Touch">
+            <GetInTouch darkMode={this.state.darkMode} />
+          </Route>
 
-    render(){
+          {this.projects.map((project) => {
+            return (
+              <Route
+                path={`/Projects/${project.reference}`}
+                key={project.reference}
+              >
+                <ProjectPage project={project} darkMode={this.state.darkMode}/>
+              </Route>
+            );
+          })}
 
-    return(
-        <div className={`ui ${this.state.darkMode ? 'inverted' : ''} basic segment`}>
-            <Navbar NavbarFields={this.NavbarFields} activeItem={this.state.active} style={this.styles} darkMode={this.state.darkMode} toggleTheme={this.toggleTheme}/>
-
-            <div className="ui tiny menu"></div> {/** Spacer for Header*/}
-
-
-            <div>
-                    
-            <Route path="/">
-                <AutoForward href="/Home"/>
-            </Route>
-            <Route path="/Home">
-                <Home darkMode={this.state.darkMode}/>
-            </Route>
-            <Route path="/Gallery">
-                <Gallery darkMode={this.state.darkMode}/>
-            </Route>
-            <Route path="/Projects">
-                <Projects darkMode={this.state.darkMode}/>
-            </Route>
-            <Route path="/Tools">
-                <Tools darkMode={this.state.darkMode}/>
-            </Route>
-            <Route path="/Get-in-Touch">
-                <GetInTouch darkMode={this.state.darkMode}/>
-            </Route>
-
-
-
-            <LoremIpsum />
-            <Footer darkMode={this.state.darkMode}/>
-            </div>
-            
-
+          <Footer darkMode={this.state.darkMode} />
         </div>
-        )
-    }
+      </div>
+    );
+  }
 }
 
 export default App;

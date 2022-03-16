@@ -9,7 +9,7 @@ const Footer = ({ darkMode }) => {
   };
 
   return (
-    <div id="footerTotal">
+    <div id="footerTotal" style={{transition: "all 0.25s ease"}}>
       <h4 className={`ui ${darkMode ? "inverted" : ""} horizontal divider`}>
         &copy; 2022 SP-Media
       </h4>
@@ -32,11 +32,11 @@ const Footer = ({ darkMode }) => {
             <div className="content">
               <div>
                 <a href="https://instagram.com/xposimon" target="_blank">
-                    @xposimon
-                </a>
-                {" "}&#x2022;{" "}
+                  @xposimon
+                </a>{" "}
+                &#x2022;{" "}
                 <a href="https://instagram.com/techreviews_de">
-                    @techreviews_de
+                  @techreviews_de
                 </a>
               </div>
             </div>
@@ -45,7 +45,10 @@ const Footer = ({ darkMode }) => {
           <div className="item">
             <i className="youtube square icon" />
             <div className="content">
-              <a href="https://www.youtube.com/channel/UCmzeMwOGbB_JSCs6uF3mqvA" target="_blank">
+              <a
+                href="https://www.youtube.com/channel/UCmzeMwOGbB_JSCs6uF3mqvA"
+                target="_blank"
+              >
                 TechReviews
               </a>
             </div>

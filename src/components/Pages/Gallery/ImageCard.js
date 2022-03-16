@@ -29,7 +29,7 @@ class ImageCard extends React.Component {
                     id={`${this.state.reference}`}
                     src={this.props.src.regular}
                     onLoad={() => this.setSpans()}
-                    onClick={this.setState({popup: !this.state.popup})}
+                    onClick={this.props.openPopup}
                 />
             </div>
         );
