@@ -33,12 +33,12 @@ class ProjectCard extends React.Component {
   };
 
   youtubeRef = () => {
-    if (this.project.youtubeLink === "" || this.project.youtubeLink === null) {
+    if (this.project.youtubeCode === "" || this.project.youtubeCode === null) {
       return null;
     } else {
       return (
         <div style={{ marginTop: "10px" }}>
-          <a href={this.project.youtubeLink} target="_blank">
+          <a href={`https://www.youtube.com/watch?v=${this.project.youtubeCode}`} target="_blank">
             <button className="ui youtube button">
               <i className="ui youtube icon" />
               Auf YouTube ansehen

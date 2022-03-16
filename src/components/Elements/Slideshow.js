@@ -97,7 +97,7 @@ const Slideshow = ({ darkMode, imageLink,  searchTerm}) => {
           id={index}
           style={{
             maxWidth: imageContainerWidth,
-            maxHeight: "550px",
+            maxHeight: imageContainerWidth * 0.6,
             marginTop: ((imageContainerWidth * 0.6) - imageHeight) / 2,
             animation: `${animation ? returnProperAnimationName() : "none"}`,
           }}
@@ -125,7 +125,7 @@ const Slideshow = ({ darkMode, imageLink,  searchTerm}) => {
     );
 
   return (
-    <div className="slideshow-container" style={{ height: imageContainerWidth * 0.6}}>
+    <div className="slideshow-container" style={{ height: imageContainerWidth * 0.6, transition: "all 0.3s ease-in-out"}}>
       <div className="ui grid">
         <div
           className="ui three wide column"

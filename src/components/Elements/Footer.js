@@ -1,7 +1,6 @@
 import react, { useState } from "react";
 
 const Footer = ({ darkMode }) => {
-  const [leftOffset, setLeftOffset] = useState(0);
 
   const centerAlign = {
     display: "grid",
@@ -9,7 +8,7 @@ const Footer = ({ darkMode }) => {
   };
 
   return (
-    <div id="footerTotal" style={{transition: "all 0.25s ease"}}>
+    <div id="footerTotal" style={{transition: "all 0.25s ease", marginTop: "50px"}}>
       <h4 className={`ui ${darkMode ? "inverted" : ""} horizontal divider`}>
         &copy; 2022 SP-Media
       </h4>
