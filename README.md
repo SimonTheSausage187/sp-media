@@ -7,7 +7,7 @@ Create file "config.js" in /src direcctory and enter:
 ------------------------------------
 
 const config = {
-  key: [your unsplash API key],
+  key: [your unsplash API key]
 };
 
 export default config;
