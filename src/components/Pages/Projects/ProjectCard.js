@@ -66,7 +66,7 @@ class ProjectCard extends React.Component {
                 onLoad={this.setSpans}
                 src={this.project.previewImage}
               />
-              <h1 className="ui inverted horizontal divider">
+              <h1 className={`ui ${this.props.darkMode ? 'inverted ' : ''}horizontal divider`}>
                 <div className="title">
                   <b>{this.project.title}</b>
                 </div>

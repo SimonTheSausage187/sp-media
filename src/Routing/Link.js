@@ -22,3 +22,5 @@ const Link = ({className, href, children}) => {
 }
 
 export default Link;
+
+// Quelle: Stephen Grider - Modern React with Redux (Lektion 13) Link: https://www.udemy.com/course/react-redux/

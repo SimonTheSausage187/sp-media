@@ -20,7 +20,7 @@ const ImagePopup = ({ src, imageID, closePopup }) => {
     if (isEscape) {
       closePopup();
     }
-  };
+  }; // Quelle: https://stackoverflow.com/questions/3369593/how-to-detect-escape-key-press-with-pure-js-or-jquery
 
   const closePopupByClick = (event) => {
     if (!(event.path[2] === document.getElementById("imageList"))) {

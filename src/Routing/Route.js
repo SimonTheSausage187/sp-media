@@ -20,3 +20,5 @@ const Route = ({path, children}) => {
 }
 
 export default Route;
+
+// Quelle: Stephen Grider - Modern React with Redux (Lektion 13) Link: https://www.udemy.com/course/react-redux/

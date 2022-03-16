@@ -57,6 +57,23 @@ const GetInTouch = ({darkMode}) => {
                 {" "}info@sp-media-imaginary-company.com
             </a>
         </div>
+        <h1
+          className={`ui ${darkMode ? "inverted " : ""}horizontal divider`}
+          style={{ fontSize: "30px", marginTop: "30px", marginBottom: "30px" }}
+        >
+          Unser Imagefilm (Symbolvideo)
+        </h1>
+        <div style={{display: "flex", justifyContent: "center"}}>
+          <iframe
+            width="1280px"
+            height="720px"
+            src={`https://www.youtube.com/embed/7t4Ji87iuqY`}
+            title="YouTube video player"
+            frameborder="0"
+            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+            allowFullScreen={true}
+          ></iframe>
+        </div>
       </div>
   )
 };

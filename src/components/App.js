@@ -18,7 +18,12 @@ class App extends React.Component {
     super(props);
     this.state = {
       darkMode: true,
+      projectsOnHomepage: 1
     };
+  }
+
+  componentDidMount() {
+    this.setState({projectsOnHomepage : Math.floor(window.innerWidth / 610)}) 
   }
 
   demoProject = (index) => {
@@ -80,11 +85,7 @@ class App extends React.Component {
           <Route path="/Home">
             <Home darkMode={this.state.darkMode} />
             <Projects
-              projects={[
-                this.projects[this.projects.length - 1],
-                this.projects[this.projects.length - 2],
-                this.projects[this.projects.length - 3],
-              ]}
+              projects={this.projects.slice(this.projects.length -1 -this.state.projectsOnHomepage, this.projects.length -1)}
               darkMode={this.state.darkMode}
             />
           </Route>
