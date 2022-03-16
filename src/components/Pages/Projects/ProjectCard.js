@@ -75,7 +75,7 @@ class ProjectCard extends React.Component {
             <div
               className={`description${this.props.darkMode ? "-darkmode" : ""}`}
             >
-              {this.project.description}
+              {this.project.previewDescription}
             </div>
           </Link>
           <div className="youtube-button-container">
